@@ -46,32 +46,47 @@
     <div class="col-sm-10 text-left maps"> 
       <div id="map"></div>
       <script>
+        var map;
+        var previusMarker;
         function initMap() {
           var myLatlng = {lat: 40.400144, lng: -3.722540};
 
-          var map = new google.maps.Map(document.getElementById('map'), {
+          map = new google.maps.Map(document.getElementById('map'), {
             zoom: 4,
             center: myLatlng
           });
 
-          var marker = new google.maps.Marker({
-            position: myLatlng,
-            map: map,
-            title: 'Click to zoom'
-          });
 
-          map.addListener('center_changed', function() {
+          //map.addListener('center_changed', function() {
             // 3 seconds after the center of the map has changed, pan back to the
             // marker.
-            window.setTimeout(function() {
-              map.panTo(marker.getPosition());
-            }, 3000);
-          });
+            //window.setTimeout(function() {
+              //map.panTo(marker.getPosition());
+            //}, 3000);
+          //});
 
-          marker.addListener('click', function() {
-            map.setZoom(8);
-            map.setCenter(marker.getPosition());
+          map.addListener('click', function(event) {
+            map.setZoom(17);
+            //map.setCenter(marker.getPosition());
+            addMarker(event.latLng);
           });
+        }
+
+        // Adds a marker to the map and push to the array.
+        function addMarker(location) {
+          if (previusMarker != null) {
+            previusMarker.setMap(null);
+          }
+          var marker = new google.maps.Marker({
+            position: location,
+            map: map
+          });
+          previusMarker = marker;
+          map.setCenter(marker.getPosition());
+          document.getElementById("usr").value = marker.getPosition().lat() + ", " +  marker.getPosition().lng();
+
+          console.log(marker.getPosition().lat());
+          console.log(marker.getPosition().lng());
         }
       </script>
       <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDlUUPKEKse9Bj_Mtq2sPoLC6BFePtl2U&callback=initMap">
