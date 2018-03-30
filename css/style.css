@@ -40,9 +40,11 @@ footer {
   width: 100%;
 }
 
-.select {
-  height: 40px;
+
+.ads {
+  height: 80px;
 }
+
 #map {
   height: 100%;
 }

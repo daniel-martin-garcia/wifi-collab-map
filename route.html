@@ -37,7 +37,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-6 "><input type="text" class="form-control" id="usr" placeholder="Selecciona un punto en el mapa"></div>
-      <div class="col-sm-6"><a href="route.html" class="btn btn-default btn-tray">Selecciona una trayectoria</a></div>
+      <div class="col-sm-6"><a href='/route.html' class="btn btn-default btn-tray">Selecciona una trayectoria</a></div>
     </div>
   </div>
 
@@ -49,15 +49,13 @@
         var mapDiv = $('#mapDiv');
         var map;
         var previusMarker;
-        $(document).ready(function(){
+        $(document).ready(function(){ 
           $('#back').click(function(){
-            if(previusMarker != null){
-              mapDiv.removeClass('col-sm-10').addClass('col-sm-12');
-              $("#panelOculto").toggle(100);
-              previusMarker.setMap(null);
-              map.setZoom(4);
-              document.getElementById("usr").value = "";
-            }
+            mapDiv.removeClass('col-sm-10').addClass('col-sm-12');
+            $("#panelOculto").toggle(100);
+            previusMarker.setMap(null);
+            map.setZoom(4);
+            document.getElementById("usr").value = "";
           });
         });
 
