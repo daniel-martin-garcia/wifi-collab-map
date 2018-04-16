@@ -36,19 +36,53 @@
 </nav>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-sm-6 "><input type="text" class="form-control" id="usr" placeholder="Selecciona un punto en el mapa"></div>
-      <div class="col-sm-6"><a href='/route.html' class="btn btn-default btn-tray">Selecciona una trayectoria</a></div>
+      <div class="col-sm-6 "><input type="text" class="form-control" id="usr" placeholder="Seleccionar origen"></div>
+      <div class="col-sm-6 "><input type="text" class="form-control" id="usr" placeholder="Seleccionar destino"></div>
     </div>
   </div>
 
 <div class="container-fluid text-center">    
   <div class="row content">
     <div class="col-sm-12 text-left maps" id="mapDiv"> 
+      <div id="floating-panel">
+      <b>Start: </b>
+      <select id="start">
+        <option value="chicago, il">Chicago</option>
+        <option value="st louis, mo">St Louis</option>
+        <option value="joplin, mo">Joplin, MO</option>
+        <option value="oklahoma city, ok">Oklahoma City</option>
+        <option value="amarillo, tx">Amarillo</option>
+        <option value="gallup, nm">Gallup, NM</option>
+        <option value="flagstaff, az">Flagstaff, AZ</option>
+        <option value="winona, az">Winona</option>
+        <option value="kingman, az">Kingman</option>
+        <option value="barstow, ca">Barstow</option>
+        <option value="san bernardino, ca">San Bernardino</option>
+        <option value="los angeles, ca">Los Angeles</option>
+      </select>
+      <b>End: </b>
+      <select id="end">
+        <option value="chicago, il">Chicago</option>
+        <option value="st louis, mo">St Louis</option>
+        <option value="joplin, mo">Joplin, MO</option>
+        <option value="oklahoma city, ok">Oklahoma City</option>
+        <option value="amarillo, tx">Amarillo</option>
+        <option value="gallup, nm">Gallup, NM</option>
+        <option value="flagstaff, az">Flagstaff, AZ</option>
+        <option value="winona, az">Winona</option>
+        <option value="kingman, az">Kingman</option>
+        <option value="barstow, ca">Barstow</option>
+        <option value="san bernardino, ca">San Bernardino</option>
+        <option value="los angeles, ca">Los Angeles</option>
+      </select>
+    </div>
       <div id="map"></div>
       <script>
         var mapDiv = $('#mapDiv');
         var map;
         var previusMarker;
+        var directionsService;
+        var directionsDisplay;
         $(document).ready(function(){ 
           $('#back').click(function(){
             mapDiv.removeClass('col-sm-10').addClass('col-sm-12');
@@ -62,19 +96,18 @@
         function initMap() {
           var myLatlng = {lat: 40.400144, lng: -3.722540};
 
+          directionsService = new google.maps.DirectionsService;
+          directionsDisplay = new google.maps.DirectionsRenderer;
           map = new google.maps.Map(document.getElementById('map'), {
             zoom: 4,
             center: myLatlng
           });
 
+          directionsDisplay.setMap(map);
 
-          //map.addListener('center_changed', function() {
-            // 3 seconds after the center of the map has changed, pan back to the
-            // marker.
-            //window.setTimeout(function() {
-              //map.panTo(marker.getPosition());
-            //}, 3000);
-          //});
+          var onChangeHandler = function() {
+            calculateAndDisplayRoute(directionsService, directionsDisplay);
+          };
 
           map.addListener('click', function(event) {
             if(mapDiv.hasClass('col-sm-12')){
@@ -90,6 +123,10 @@
             //map.setCenter(marker.getPosition());
             addMarker(event.latLng);
           });
+
+          document.getElementById('start').addEventListener('change', onChangeHandler);
+          document.getElementById('end').addEventListener('change', onChangeHandler);
+
         }
 
         // Adds a marker to the map and push to the array.
@@ -107,6 +144,41 @@
           console.log(marker.getPosition().lat());
           console.log(marker.getPosition().lng());
         }
+
+        function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+          directionsService.route({
+            origin: document.getElementById('start').value,
+            destination: document.getElementById('end').value,
+            travelMode: 'DRIVING'
+          }, function(response, status) {
+            if (status === 'OK') {
+              directionsDisplay.setDirections(response);
+              var stepsArray = response.routes[0].legs[0].steps;
+              var i;
+              console.log(stepsArray);
+              for(i=0; i<stepsArray.length; i++){
+                var lat_origen = stepsArray[i].start_location.lat();
+                var lng_origen = stepsArray[i].start_location.lng();
+
+                var lat_dest = stepsArray[i].end_location.lat();
+                var lng_dest = stepsArray[i].end_location.lng();
+
+                var paths = stepsArray[i].path;
+                //console.log(paths);
+                for (var j=0; j<paths.length; j++) {
+                  var lat_path = paths[j].lat();
+                  var lng_path = paths[j].lng();
+                  console.log("Punto: " + lat_path + ", " + lng_path);
+                }
+                //console.log("Origen: " + lat_origen + ", " + lng_origen)
+                //console.log("Destino: " + lat_dest + ", " + lng_dest)
+              }
+            } else {
+              window.alert('Directions request failed due to ' + status);
+            }
+          });
+        }
+
       </script>
       <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDlUUPKEKse9Bj_Mtq2sPoLC6BFePtl2U&callback=initMap">
       </script>
