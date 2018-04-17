@@ -8,6 +8,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="icon" href="images/WifiWay.png">
 </head>
 <body>
 
@@ -45,80 +46,20 @@
   <div class="row content">
     <div class="col-sm-12 text-left maps" id="mapDiv"> 
       <div id="map"></div>
-      <script>
-        var mapDiv = $('#mapDiv');
-        var map;
-        var previusMarker;
-        $(document).ready(function(){
-          $('#back').click(function(){
-            if(previusMarker != null){
-              mapDiv.removeClass('col-sm-10').addClass('col-sm-12');
-              $("#panelOculto").toggle(100);
-              previusMarker.setMap(null);
-              map.setZoom(4);
-              document.getElementById("usr").value = "";
-            }
-          });
-        });
-
-        function initMap() {
-          var myLatlng = {lat: 40.400144, lng: -3.722540};
-
-          map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 4,
-            center: myLatlng
-          });
-
-
-          //map.addListener('center_changed', function() {
-            // 3 seconds after the center of the map has changed, pan back to the
-            // marker.
-            //window.setTimeout(function() {
-              //map.panTo(marker.getPosition());
-            //}, 3000);
-          //});
-
-          map.addListener('click', function(event) {
-            if(mapDiv.hasClass('col-sm-12')){
-              mapDiv.removeClass('col-sm-12').addClass('col-sm-10');
-              $("#panelOculto").toggle(100);
-            } 
-            //else {
-            //  mapDiv.removeClass('col-sm-10').addClass('col-sm-12');
-            //}
-            //$("#panelOculto").toggle(100);
-
-            map.setZoom(17);
-            //map.setCenter(marker.getPosition());
-            addMarker(event.latLng);
-          });
-        }
-
-        // Adds a marker to the map and push to the array.
-        function addMarker(location) {
-          if (previusMarker != null) {
-            previusMarker.setMap(null);
-          }
-          var marker = new google.maps.Marker({
-            position: location,
-            map: map
-          });
-          previusMarker = marker;
-          map.setCenter(marker.getPosition());
-          document.getElementById("usr").value = marker.getPosition().lat() + ", " +  marker.getPosition().lng();
-          console.log(marker.getPosition().lat());
-          console.log(marker.getPosition().lng());
-        }
+      <script src="js/index.js">
       </script>
       <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDlUUPKEKse9Bj_Mtq2sPoLC6BFePtl2U&callback=initMap">
       </script>
     </div>
     <div class="col-sm-2 sidenav" id="panelOculto" style="display: none;">
       <div class="well">
-        <p>ADS</p>
+        <p>Info marker</p>
       </div>
       <div class="well">
-        <p>ADS</p>
+        <p>Info marker</p>
+      </div>
+      <div class="well">
+        <p>Info marker</p>
       </div>
     </div>
   </div>
@@ -143,8 +84,8 @@
   </div>
 </div>
 
-<footer class="container-fluid text-center">
-  <p>Footer Text</p>
+<footer class="text-center">
+  <p>Copyright ©. WifiWay. All Rights Reserved.</p>
 </footer>
 
 </body>
