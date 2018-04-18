@@ -1,60 +1,56 @@
-{
-	"wifi": [
-		{
+wifi = [{
 			"index": 1,
 			"SSID": "Movistar V01",
 			"MAC": "00:00:00:00:00:01",
 			"Type": "OpenEnc1",
-			"SignalStrength": -61,
+			"SignalStrength": -61
 		},
 		{
 			"index": 2,
 			"SSID": "Movistar V02",
 			"MAC": "00:00:00:00:00:02",
 			"Type": "OpenEnc2",
-			"SignalStrength": -62,
+			"SignalStrength": -62
 		},
 		{
 			"index": 3,
 			"SSID": "Movistar V03",
 			"MAC": "00:00:00:00:00:03",
 			"Type": "ClosedEnc1",
-			"SignalStrength": -63,
+			"SignalStrength": -63
 		},
 		{
 			"index": 4,
 			"SSID": "Movistar V04",
 			"MAC": "00:00:00:00:00:04",
 			"Type": "ClosedEnc2",
-			"SignalStrength": -64,
+			"SignalStrength": -64
 		},
 		{
 			"index": 5,
 			"SSID": "Movistar V05",
 			"MAC": "00:00:00:00:00:05",
 			"Type": "",
-			"SignalStrength": -65,
+			"SignalStrength": -65
 		},
 		{
 			"index": 6,
 			"SSID": "Vodafone V01",
 			"MAC": "00:00:00:00:01:01",
 			"Type": "ClosedEnc4",
-			"SignalStrength": -66,
+			"SignalStrength": -66
 		},
 		{
 			"index": 7,
 			"SSID": "Vodafone V02",
 			"MAC": "00:00:00:00:01:02",
 			"Type": "",
-			"SignalStrength": -67,
+			"SignalStrength": -67
 		},
 		{
 			"index": 8,
 			"SSID": "Vodafone V03",
 			"MAC": "00:00:00:00:01:03",
 			"Type": "OpenEnc1",
-			"SignalStrength": -68,
-		},
-	]
-}
+			"SignalStrength": -68
+		}];
