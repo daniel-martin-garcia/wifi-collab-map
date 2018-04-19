@@ -10,11 +10,11 @@ var showingNetworks = "Todas";
 
 //Cuando pulsamos el icono reiniciamos el marker
 $('#back').click(function(){
-    if(mapDiv.hasClass('col-sm-10')){
+    if(mapDiv.hasClass('col-sm-9')){
       $("#panelOculto").toggle(1);
-      mapDiv.removeClass('col-sm-10').addClass('col-sm-12');
+      mapDiv.removeClass('col-sm-9').addClass('col-sm-12');
       previusMarker.setMap(null);
-      map.setZoom(4);
+      map.setZoom(6);
       document.getElementById("usr").value = "";
   }
 });
@@ -26,7 +26,7 @@ function initMap() {
 
   //Creamos un mapa
   map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 4,
+    zoom: 6,
     center: myLatlng
   });
 
@@ -47,7 +47,7 @@ function initMap() {
   //Cuando se hace click en el mapa se abre un panel lateral y se añade un marker
   map.addListener('click', function(event) {
     if(mapDiv.hasClass('col-sm-12')){
-      mapDiv.removeClass('col-sm-12').addClass('col-sm-10');
+      mapDiv.removeClass('col-sm-12').addClass('col-sm-9');
       $("#panelOculto").toggle(100);
     } 
     map.setZoom(17);
@@ -101,56 +101,56 @@ function showNetworks() {
 
 var wifi = [{
       "index": 1,
-      "SSID": "Movistar V01",
+      "SSID": "Movistar V00001",
       "MAC": "00:00:00:00:00:01",
       "Type": "OpenEnc1",
       "SignalStrength": -61
     },
     {
       "index": 2,
-      "SSID": "Movistar V02",
+      "SSID": "Movistar V00002",
       "MAC": "00:00:00:00:00:02",
       "Type": "OpenEnc2",
       "SignalStrength": -62
     },
     {
       "index": 3,
-      "SSID": "Movistar V03",
+      "SSID": "Movistar V00003",
       "MAC": "00:00:00:00:00:03",
       "Type": "ClosedEnc1",
       "SignalStrength": -63
     },
     {
       "index": 4,
-      "SSID": "Movistar V04",
+      "SSID": "Movistar V00004",
       "MAC": "00:00:00:00:00:04",
       "Type": "ClosedEnc2",
       "SignalStrength": -64
     },
     {
       "index": 5,
-      "SSID": "Movistar V05",
+      "SSID": "Movistar V00005",
       "MAC": "00:00:00:00:00:05",
       "Type": "",
       "SignalStrength": -65
     },
     {
       "index": 6,
-      "SSID": "Vodafone V01",
+      "SSID": "Vodafone V00001",
       "MAC": "00:00:00:00:01:01",
       "Type": "ClosedEnc4",
       "SignalStrength": -66
     },
     {
       "index": 7,
-      "SSID": "Vodafone V02",
+      "SSID": "Vodafone V00002",
       "MAC": "00:00:00:00:01:02",
       "Type": "",
       "SignalStrength": -67
     },
     {
       "index": 8,
-      "SSID": "Vodafone V03",
+      "SSID": "Vodafone V00003",
       "MAC": "00:00:00:00:01:03",
       "Type": "OpenEnc1",
       "SignalStrength": -68
