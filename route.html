@@ -10,64 +10,68 @@
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <link rel="icon" href="images/WifiWay.png">
 </head>
-<body>
 
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <a class="navbar-brand" href="#" id="back">WifiWay</a>
+<body>
+  <!-- BARRA DE NAVEGACION -->
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+        </button>
+        <a class="navbar-brand" href="#" id="back">WifiWay</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Projects</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Projects</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+  </nav>
+
+  <!-- INPUT PARA LATITUD/LONGITUD DE ORIGEN Y DESTINO-->
   <div class="container-fluid">
     <div class="row">
-      <div class="col-sm-6 "><input type="text" class="form-control" id="origen" placeholder="Pincha origen y seleccionar origen"></div>
-      <div class="col-sm-6 "><input type="text" class="form-control" id="destino" placeholder="Pincha destino y eleccionar destino"></div>
+      <div class="col-sm-6 "><input type="text" class="form-control latlng" id="origen" placeholder="Pincha origen y seleccionar origen"></div>
+      <div class="col-sm-6 "><input type="text" class="form-control latlng" id="destino" placeholder="Pincha destino y eleccionar destino"></div>
     </div>
   </div>
 
-<div class="container-fluid text-center">    
-  <div class="row content">
-    <div class="col-sm-12 text-left maps" id="mapDiv"> 
-      <div id="map"></div>
-      <script src="js/route.js">
-
-      </script>
-      <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDlUUPKEKse9Bj_Mtq2sPoLC6BFePtl2U&callback=initMap">
-      </script>
-    </div>
-    <div class="col-sm-2 sidenav" id="panelOculto" style="display: none;">
-      <div class="well">
-        <p>Info trayectoria</p>
+  <!-- DIV QUE CONTIENE EL MAPA Y EL SIDENAV DE LA INFO DE LAS REDES WIFI -->
+  <div class="container-fluid text-center">    
+    <div class="row content">
+      <div class="col-sm-12 text-left maps" id="mapDiv"> 
+        <div id="map"></div>
+        <script src="js/route.js">
+        </script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDlUUPKEKse9Bj_Mtq2sPoLC6BFePtl2U&callback=initMap">
+        </script>
       </div>
-      <div class="well">
-        <p>Info trayectoria</p>
-      </div>
-      <div class="well">
-        <p>Info trayectoria</p>
+      <div class="col-sm-2 sidenav" id="panelOculto" style="display: none;">
+        <div class="well">
+          <p>Info trayectoria</p>
+        </div>
+        <div class="well">
+          <p>Info trayectoria</p>
+        </div>
+        <div class="well">
+          <p>Info trayectoria</p>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<footer class="container-fluid text-center">
-  <p>Copyright ©. WifiWay. All Rights Reserved.</p>
-</footer>
 
+  <!-- FOOTER -->
+  <footer class="container-fluid text-center">
+    <p>Copyright ©. WifiWay. All Rights Reserved.</p>
+  </footer>
 </body>
 </html>

@@ -5,7 +5,7 @@
 }
 
 /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-.row.content {height: 595px}
+.row.content {height: 585px}
 
 /* Set gray background color and 100% height */
 .sidenav {
@@ -40,8 +40,10 @@ footer {
 .maps {
   height: 100%;
 }
-.btn-tray {
+.latlng {
   width: 100%;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .ads {
