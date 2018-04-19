@@ -41,9 +41,12 @@ footer {
   height: 100%;
 }
 .latlng {
-  width: 100%;
   margin-top: 5px;
   margin-bottom: 5px;
+}
+
+.btn-tray {
+  width: 100%;
 }
 
 .ads {
@@ -66,4 +69,10 @@ footer {
   font-family: 'Roboto','sans-serif';
   line-height: 30px;
   padding-left: 10px;
+}
+
+.startFinish {
+  padding-top: 5px;
+  padding-left: 60px;
+  font-size: 18px;
 }

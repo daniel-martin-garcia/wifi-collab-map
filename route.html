@@ -40,8 +40,10 @@
   <!-- INPUT PARA LATITUD/LONGITUD DE ORIGEN Y DESTINO-->
   <div class="container-fluid">
     <div class="row">
-      <div class="col-sm-6 "><input type="text" class="form-control latlng" id="origen" placeholder="Pincha origen y seleccionar origen"></div>
-      <div class="col-sm-6 "><input type="text" class="form-control latlng" id="destino" placeholder="Pincha destino y eleccionar destino"></div>
+      <div class="col-sm-1 latlng startFinish">Origen: </div>
+      <div class="col-sm-5 latlng"><input type="text" class="form-control" id="origen" placeholder="Pincha origen y seleccionar origen"></div>
+      <div class="col-sm-1 latlng startFinish">Destino: </div>
+      <div class="col-sm-5 latlng"><input type="text" class="form-control" id="destino" placeholder="Pincha destino y eleccionar destino"></div>
     </div>
   </div>
 
@@ -55,15 +57,19 @@
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDlUUPKEKse9Bj_Mtq2sPoLC6BFePtl2U&callback=initMap">
         </script>
       </div>
-      <div class="col-sm-2 sidenav" id="panelOculto" style="display: none;">
-        <div class="well">
-          <p>Info trayectoria</p>
-        </div>
-        <div class="well">
-          <p>Info trayectoria</p>
-        </div>
-        <div class="well">
-          <p>Info trayectoria</p>
+      <div class="col-sm-3 sidenav" id="panelOculto" style="display: none;">
+        <form>
+          <label class="radio-inline">
+            <input type="radio" name="optradio" class="allNetworks" checked>Todas
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="optradio" class="openNetworks">Abiertas
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="optradio" class="closedNetworks">Cerradas
+          </label>
+        </form>
+        <div class="panel-group" id="accordion">
         </div>
       </div>
     </div>
