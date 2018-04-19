@@ -2,6 +2,10 @@
 var mapDiv = $('#mapDiv');
 var map;
 var previusMarker;
+var allNetworks = $('·allNetworks');
+var openNetworks = $('.openNetworks');
+var closedNetworks = $('.closedNetworks');
+var showingNetworks = "Todas";
 
 
 //Cuando pulsamos el icono reiniciamos el marker
@@ -26,6 +30,20 @@ function initMap() {
     center: myLatlng
   });
 
+  $("input[name='optradio']").change(function(){
+    if($('input[name="optradio"][class="openNetworks"]').is(':checked')){
+      showingNetworks = "Abierta";
+      showNetworks();
+    } else if($('input[name="optradio"][class="closedNetworks"]').is(':checked')){
+      showingNetworks = "Cerrada";
+      showNetworks();
+    } else{
+      showingNetworks = "Todas";
+      showNetworks();
+    }
+    //console.log($('input[name="optradio"][class="allNetworks"]').is(':checked'));
+  });
+
   //Cuando se hace click en el mapa se abre un panel lateral y se añade un marker
   map.addListener('click', function(event) {
     if(mapDiv.hasClass('col-sm-12')){
@@ -34,7 +52,7 @@ function initMap() {
     } 
     map.setZoom(17);
     addMarker(event.latLng);
-    lee_json();
+    showNetworks();
   });
 
 }
@@ -56,7 +74,8 @@ function addMarker(location) {
   console.log(marker.getPosition().lng());
 }
 
-function lee_json() {
+//Funcion que enseña todas las redes
+function showNetworks() {
   $("#accordion").html("");
   for (var i = 0; i < wifi.length; i++) {
     var name = wifi[i].SSID;
@@ -70,9 +89,15 @@ function lee_json() {
       tipo = "Cerrada";
     }
 
+    if(showingNetworks !== "Todas" && tipo !== showingNetworks){
+      continue;
+    }
+
     $("#accordion").append("<div class='panel panel-default'> <div class='panel-heading'> <h4 class='panel-title'> <a data-toggle='collapse' data-parent='#accordion' href='#collapse"+i+1+"'>" + name + " (" + tipo + ")" +  "</a> </h4></div> <div id='collapse"+ i+1+"' class='panel-collapse collapse'> <div class='panel-body'><p>MAC: " + MAC + "</p><p>Tipo: " + type + "</p><p>Potencia: " + SignalStrength + " dBm</p></div> </div> </div>");
   }
 }
+
+
 
 var wifi = [{
       "index": 1,
